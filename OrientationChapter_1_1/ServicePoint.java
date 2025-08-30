@@ -23,10 +23,14 @@ public class ServicePoint {
 
     public void serve() {
         long serviceTime;
+        long totalServiceTime = 0;
+
+        int queueSize = queue.size();
 
         while (!queue.isEmpty()) {
             Customer removedCustomer = removeFromQueue();
             serviceTime = (long) (Math.random() * 1000);
+            totalServiceTime += serviceTime;
             try {
                 Thread.sleep(serviceTime);
             } catch (IllegalArgumentException e) {
@@ -40,6 +44,9 @@ public class ServicePoint {
             long totalTimeSpent = removedCustomer.timeSpent() + serviceTime;
             System.out.println("- Total time spent: " + totalTimeSpent + " ns");
         }
+
+        long averageServiceTime = totalServiceTime / queueSize;
+        System.out.println("Average service time: " + averageServiceTime + " ns");
     }
 
     public String toString() {
