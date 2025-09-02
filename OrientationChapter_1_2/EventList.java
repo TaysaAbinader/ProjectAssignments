@@ -28,11 +28,12 @@ public class EventList {
 
     public static void main(String[] args) {
         EventList events = new EventList();
+       
+        events.addEvent(new Event(Event.EventType.ARRIVAL, Instant.ofEpochSecond(1L)));
+        events.addEvent(new Event(Event.EventType.ARRIVAL, Instant.ofEpochSecond(2L)));
+        events.addEvent(new Event(Event.EventType.ARRIVAL, Instant.ofEpochSecond(3L)));
+        events.addEvent(new Event(Event.EventType.EXIT, Instant.ofEpochSecond(4L)));
 
-        events.addEvent(new Event(Instant.ofEpochSecond(1L)));
-        events.addEvent(new Event(Instant.ofEpochSecond(2L)));
-        events.addEvent(new Event(Instant.ofEpochSecond(3L)));
-        events.addEvent(new Event(Instant.ofEpochSecond(4L)));
 
         while (!events.isEmpty()) {
             Event event = events.pollEvent();

@@ -4,9 +4,16 @@ import java.time.Instant;
 
 public class Event implements Comparable<Event> {
      private Instant timestamp;
+     public enum EventType { ARRIVAL, EXIT };
+     private EventType eventType;
 
-     public Event (Instant timestamp) {
+     public Event (EventType eventType, Instant timestamp) {
+        this.eventType = eventType;
         this.timestamp = timestamp;
+    }
+
+    public EventType getEventType () {
+        return eventType;
     }
 
     @Override
@@ -16,6 +23,7 @@ public class Event implements Comparable<Event> {
 
     @Override
     public String toString() {
-        return this.timestamp.toString();
+        return this.eventType.toString() + " - " + this.timestamp.toString();
     }
+
 }
