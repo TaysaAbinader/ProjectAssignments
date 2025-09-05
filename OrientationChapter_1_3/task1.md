@@ -1,15 +1,15 @@
 # Task 1
 
-## Gather data
+## 1. Gather data
 First, I would gather the data needed by getting a list of how many students are and the ages of them, and separate the quantity of students per age.
 
-## Convert the count data into probabilities
+## 2. Convert the count data into probabilities
 After that, I should convert the quantity data into probabilities by dividing the amount of students on each age group by the total number of students.
 
-## Build cumulative distribution
+## 3. Build cumulative distribution
 Then I should build a cumulative distribution by stacking the probabities on top of each other, so a probability range for each age group can be built.
 
-## Draw random numbers between 0 and 1
+## 4. Draw random numbers between 0 and 1
 Finally, I should draw random numbers between 0 and 1, and repeat the process 1000 times. It works because the chance of the random number to fall into each cumulative distribution interval is equal to the proportio of each age in the age group.
 
 ## Pseudo-code example
@@ -44,9 +44,9 @@ Inside the loop:
 
 * create a variable random = random(0, 1)
 
-* Iterate through the cumulative distribution list, the random value can be compared with the cumulativeDistribution.
+* Iterate through the ages list, and use the cumulativeDistribution as a comparative parameter to the random value to find the related age.
 
-* when the random fits a cumulativeDistribution value, iterate through the ages list to find the age related to the cumulativeDistribution range.
+* when the random fits a cumulativeDistribution value range you get the age.
 
 * when the age is found add it to the ageSamples list.
 
