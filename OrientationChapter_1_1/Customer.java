@@ -1,3 +1,5 @@
+package OrientationChapter_1_1;
+
 public class Customer {
     private static int idIncrementor = 1;
     private int id;
@@ -14,6 +16,10 @@ public class Customer {
 
     public void updateStartTime() {
         this.startTime = System.nanoTime();
+    }
+
+    public void setStartTime(long startTimeInNanoseconds) {
+        this.startTime = startTimeInNanoseconds;
     }
 
     public long getStartTime () {
