@@ -24,22 +24,31 @@ public class ArrivalProcess {
         return normalDistribution;
     }
 
-    public void generatedArrivalEventsToEventList(int quantity, EventList list) {
-        for (int i = 0; i < quantity; i++) {
-            long sample = (long) normalDistribution.sample();
-            Event event = new Event(this.eventType, Instant.ofEpochSecond(sample));
-            list.addEvent(event);
-        }
+    public void generateArrivalEventToEventList(EventList list) {
+        long sample = (long) normalDistribution.sample();
+        Event event = new Event(this.eventType, Instant.ofEpochSecond(sample));
+        list.addEvent(event);
     }
+
     public static void main (String[] args) {
         ArrivalProcess process = new ArrivalProcess();
         EventList list = new EventList();
 
-        process.generatedArrivalEventsToEventList(10, list);
+        // Create 10 arrival events.
+        for (int i = 0 ; i < 10; i++) {
+            process.generateArrivalEventToEventList(list);
+        }
 
+        Clock clock = Clock.getInstance();
+
+        System.out.println("Event list:");
+        // Poll events from the event list and update the clock accordingly.
         while (!list.isEmpty()) {
             Event event = list.pollEvent();
             System.out.println(event);
+            // Convert milliseconds to seconds.
+            clock.setTime(event.getInstant().toEpochMilli() / 1000);
+            System.out.println(" - Clock is now updated to " + clock.getTime() + " seconds since Epoch.");
         }
     }
 }

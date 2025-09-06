@@ -16,6 +16,10 @@ public class Event implements Comparable<Event> {
         return eventType;
     }
 
+    public Instant getInstant () {
+        return timestamp;
+    }
+
     @Override
     public int compareTo(Event other) {
         return this.timestamp.compareTo(other.timestamp);
