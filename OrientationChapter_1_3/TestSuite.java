@@ -32,12 +32,12 @@ public class TestSuite {
             customer.setStartTime(eventTimeInMilliseconds * 1_000_000);
             servicePoint.addToQueue(customer);
             
-            // Convert millisecond to second.
-            clock.setTime(eventTimeInMilliseconds / 1_000);
+            // Move clock forward by 5 seconds.
+            clock.setTime(clock.getTime() + 5L);
         }
 
         servicePoint.serve();
 
-        System.out.println("Clock time for the last event created: " + clock.getTime());
+        System.out.println("Clock time for the last event created: " + clock.getTime() + " seconds.");
     }
 }
